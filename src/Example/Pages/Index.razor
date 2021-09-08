@@ -1,0 +1,88 @@
+﻿@page "/"
+@using UIComponents.Flags
+
+
+
+<div class="row">
+	<div class="col-md-8">
+		<h2>Flags</h2>
+		<div class="contentHolder">		
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Country</th>
+						<th>ISO Code</th>
+						<th>Flag</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var country in (Country[])  Enum.GetValues(typeof(Country)))
+					{
+						<tr>
+							<td>@country.GetDescription()</td>
+							<td>@country.ToString()</td>
+							<td><CountryFlag Country="@country" Size="@size" HasShadow="@hasShadow" IsRounded="@isRounded" Class="mx-3"/></td>
+						</tr>
+					}
+				</tbody>
+			</table>		
+		</div>
+	</div>
+
+
+	<div class="col-md-4">
+
+		<h2>Properties</h2>
+
+		<div class="contentHolder">
+			<h6>Rounded</h6>
+			<div class="custom-control custom-checkbox">
+			  <input type="checkbox" class="custom-control-input" id="isRoundedChxBx" @bind="@isRounded">
+			  <label class="custom-control-label" for="isRoundedChxBx">IsRounded</label>
+			</div>
+		</div>
+
+		<div class="contentHolder">
+			<h6>Shadow</h6>
+			<div class="custom-control custom-checkbox">
+			  <input type="checkbox" class="custom-control-input" id="hasShadowChxBx" @bind="@hasShadow" />
+			  <label class="custom-control-label" for="hasShadowChxBx">HasShadow</label>
+			</div>
+		</div>
+
+		<div class="contentHolder" >
+			<h6>Size</h6>
+			<div class="custom-control custom-radio">
+			  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" @onchange="@((ChangeEventArgs __e) => size = FlagSize.Small)">
+			  <label class="custom-control-label" for="customRadio1">Small</label>
+			</div>
+			<div class="custom-control custom-radio">
+			  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" @onchange="@((ChangeEventArgs __e) => size = FlagSize.Normal)" checked="checked">
+			  <label class="custom-control-label" for="customRadio2">Normal</label>
+			</div>
+			<div class="custom-control custom-radio">
+			  <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" @onchange="@((ChangeEventArgs __e) => size = FlagSize.Large)">
+			  <label class="custom-control-label" for="customRadio3">Large</label>
+			</div>
+		</div>
+
+		<div class="contentHolder" >
+			<b>Credits</b>
+			<p>Ported from <a href="https://github.com/P3trur0/vue-country-flag">vue-country-flag.</a> </p>
+		</div>
+	</div>
+</div>
+
+
+
+@code {
+
+	private bool isRounded;
+
+	private bool hasShadow;
+
+	private FlagSize size;
+
+
+}
