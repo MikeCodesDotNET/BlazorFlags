@@ -1,12 +1,26 @@
 # BlazorFlags
 Country Flags component for Blazor. A port of [vue-country-flags](https://github.com/P3trur0/vue-country-flag).
 
+![Nuget](https://img.shields.io/nuget/v/BlazorFlags?style=flat-square)
+
 <p align="center">
   <img src="assets/example_screenshot.png?raw=true" alt="example app screenshot"/>
 </p>
 
 
-## Example usage 
+## Get Started
+
+### Add Package
+```bash
+Install-Package BlazorFlags -Version 1.0.0
+```
+
+### Import Namespace
+```
+@using UIComponents.Flags
+```
+
+### Example usage 
 
 ```html
 <CountryFlag Country="@country" Size="@size" HasShadow="@hasShadow" IsRounded="@isRounded" Class="mx-3"/>
